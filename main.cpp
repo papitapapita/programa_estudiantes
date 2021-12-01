@@ -6,28 +6,41 @@ class Students
 {
 private:
     string name, course, surname, result;
-    float mark;
+    float mark1, mark2, mark3, promedio;
     int id;
 
 public:
     Students()
     {
         name = course = surname = "";
-        mark = id = 0;
+        id = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            mark[i] = 0;
+        }
     }
-    Students(string name, string course, string surname, float mark, int id)
+    Students(string name, string course, string surname, float mark1, float mark2, float mark3, int id)
     {
         this->name = name;
         this->surname = surname;
         this->course = course;
-        this->mark = mark;
+        this->mark1 = mark1;
+        this->mark2 = mark2;
+        this->mark3 = mark3;
         this->id = id;
     }
+
+    float Promedio()
+    {
+        promedio = (mark1 + mark2 + mark3) / 3;
+        return promedio;
+    }
+
     string Aprobacion()
     {
-        if (mark >= 3 && mark <= 5)
+        if (promedio >= 3 && promedio <= 5)
             return "aprobó";
-        else if (mark < 3 && mark > 0)
+        else if (promedio < 3 && promedio > 0)
             return "no aprobó";
         else
             return "nota invalida";
@@ -49,9 +62,17 @@ public:
     {
         return id;
     }
-    float getMark()
+    float getMark1()
     {
-        return mark;
+        return mark1;
+    }
+    float getMark2()
+    {
+        return mark2;
+    }
+    float getMark3()
+    {
+        return mark3;
     }
     void setName(string name)
     {
@@ -65,11 +86,19 @@ public:
     {
         this->surname = surname;
     }
-    void setSurname(int mark)
+    void setMark1(int mark1)
     {
-        this->mark = mark;
+        this->mark1 = mark1;
     }
-    void setSurname(int id)
+    void setMark2(int mark2)
+    {
+        this->mark2 = mark2;
+    }
+    void setMark3(int mark3)
+    {
+        this->mark3 = mark3;
+    }
+    void setId(int id)
     {
         this->id = id;
     }
