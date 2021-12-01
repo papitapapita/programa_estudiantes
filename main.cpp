@@ -4,10 +4,13 @@ using namespace std;
 
 class Students
 {
-public:
+private:
     string name, course, surname, result;
     float mark;
     int id;
+
+public:
+
     Students()
     {
         name = course = surname = "";
@@ -35,8 +38,9 @@ public:
 int main()
 {
     Students estudiantes[4];
-    string result;
-    int option;
+    string nResult, nName, nSurname, nCourse, result;
+    float nMark;
+    int option, nId;
     int out = 1;
     int i = 0;
     int studentOption;
@@ -62,15 +66,16 @@ int main()
             while (i < 3)
             {
                 cout << "Nombre: ";
-                cin >> estudiantes[i].name;
+                cin >> nName;
                 cout << "Apellido: ";
-                cin >> estudiantes[i].surname;
+                cin >> nSurname;
                 cout << "Documento: ";
-                cin >> estudiantes[i].id;
+                cin >> nId;
                 cout << "Asignatura: ";
-                cin >> estudiantes[i].course;
+                cin >> nCourse;
                 cout << "Nota: ";
-                cin >> estudiantes[i].mark;
+                cin >> nMark;
+                estudiantes[i]= Students(nName, nCourse, nSurname,nMark, nId);
                 i++;
                 break;
             }
