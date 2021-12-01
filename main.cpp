@@ -10,19 +10,18 @@ private:
     int id;
 
 public:
-
     Students()
     {
         name = course = surname = "";
         mark = id = 0;
     }
-    Students(string nName, string nCourse, string nSurname, float nMark, int nId)
+    Students(string name, string course, string surname, float mark, int id)
     {
-        name = nName;
-        surname = nSurname;
-        course = nCourse;
-        mark = nMark;
-        id = nId;
+        this->name = name;
+        this->surname = surname;
+        this->course = course;
+        this->mark = mark;
+        this->id = id;
     }
     string Aprobacion()
     {
@@ -33,12 +32,32 @@ public:
         else
             return "nota invalida";
     }
+    void setName(string name)
+    {
+        this->name = name;
+    }
+    void setCourse(string course)
+    {
+        this->course = course;
+    }
+    void setSurname(string surname)
+    {
+        this->surname = surname;
+    }
+    void setSurname(int mark)
+    {
+        this->mark = mark;
+    }
+    void setSurname(int id)
+    {
+        this->id = id;
+    }
 };
 
 int main()
 {
     Students estudiantes[4];
-    string nResult, nName, nSurname, nCourse, result;
+    string nName, nSurname, nCourse;
     float nMark;
     int option, nId;
     int out = 1;
@@ -75,7 +94,7 @@ int main()
                 cin >> nCourse;
                 cout << "Nota: ";
                 cin >> nMark;
-                estudiantes[i]= Students(nName, nCourse, nSurname,nMark, nId);
+                estudiantes[i] = Students(nName, nCourse, nSurname, nMark, nId);
                 i++;
                 break;
             }
