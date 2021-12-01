@@ -5,7 +5,7 @@ using namespace std;
 class Students
 {
 private:
-    string name, course, surname, result;
+    string name, course, surname;
     float mark;
     int id;
 
@@ -43,9 +43,6 @@ public:
     string getCourse(){
         return Course;
     }
-    string getSurname(){
-        return Surname;
-    }
     int getId(){
         return  id;
     }
@@ -64,11 +61,11 @@ public:
     {
         this->surname = surname;
     }
-    void setSurname(int mark)
+    void setMark(int mark)
     {
         this->mark = mark;
     }
-    void setSurname(int id)
+    void setId(int id)
     {
         this->id = id;
     }
@@ -146,23 +143,28 @@ int main()
                 {
                 case 1:
                     cout << "Nuevo nombre: ";
-                    cin >> estudiantes[studentOption].name;
+                    cin >> nName ;
+                    estudiantes[studentOption].setName(nName);
                     break;
                 case 2:
                     cout << "Nuevo apellido: ";
-                    cin >> estudiantes[studentOption].surname;
+                    cin >> nSurname ;
+                    estudiantes[studentOption].setSurname(nSurname);
                     break;
                 case 3:
                     cout << "Nueva Materia: ";
-                    cin >> estudiantes[studentOption].course;
+                    cin >> nCourse ;
+                    estudiantes[studentOption].setCourse();
                     break;
                 case 4:
                     cout << "Nueva nota: ";
-                    cin >> estudiantes[studentOption].mark;
+                    cin >> nMark
+                    estudiantes[studentOption].setMark(nMark);
                     break;
                 case 5:
                     cout << "Nuevo documento: ";
-                    cin >> estudiantes[studentOption].id;
+                    cin >> nId;
+                    estudiantes[studentOption].setId(nId);
                     break;
                 case 6:
                     repeatME = 0;
