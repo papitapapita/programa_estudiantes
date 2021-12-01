@@ -10,6 +10,7 @@ private:
     int id;
 
 public:
+
     Students()
     {
         name = course = surname = "";
@@ -31,6 +32,25 @@ public:
             return "no aprobó";
         else
             return "nota invalida";
+    }
+
+    string getName(){
+        return name;
+    }
+    string getSurname(){
+        return Surname;
+    }
+    string getCourse(){
+        return Course;
+    }
+    string getSurname(){
+        return Surname;
+    }
+    int getId(){
+        return  id;
+    }
+    float getMark(){
+        return mark;
     }
     void setName(string name)
     {
@@ -57,7 +77,7 @@ public:
 int main()
 {
     Students estudiantes[4];
-    string nName, nSurname, nCourse;
+    string nName, nSurname, nCourse, result;
     float nMark;
     int option, nId;
     int out = 1;
@@ -94,7 +114,7 @@ int main()
                 cin >> nCourse;
                 cout << "Nota: ";
                 cin >> nMark;
-                estudiantes[i] = Students(nName, nCourse, nSurname, nMark, nId);
+                estudiantes[i]= Students(nName, nCourse, nSurname,nMark, nId);
                 i++;
                 break;
             }
@@ -105,7 +125,7 @@ int main()
             cout << "Estudiante: \n";
             for (int i = 0; i < 3; i++)
             {
-                cout << i + 1 << "." << estudiantes[i].name << "\n";
+                cout << i + 1 << "." << estudiantes[i].getName() << "\n";
             }
             cin >> studentOption;
             studentOption -= 1;
@@ -158,17 +178,17 @@ int main()
             cout << "Mostrar: \n";
             for (int i = 0; i < 3; i++)
             {
-                cout << i + 1 << "." << estudiantes[i].name << "\n";
+                cout << i + 1 << "." << estudiantes[i].getName() << "\n";
             }
             cin >> studentOption;
             studentOption -= 1;
             result = estudiantes[studentOption].Aprobacion();
             cout
-                << "Nombre: " << estudiantes[studentOption].name << endl
-                << "Apellido: " << estudiantes[studentOption].surname << endl
-                << "Documento: " << estudiantes[studentOption].id << endl
-                << "Asignatura: " << estudiantes[studentOption].course << endl
-                << "Nota: " << estudiantes[studentOption].mark << endl
+                << "Nombre: " << estudiantes[studentOption].getName() << endl
+                << "Apellido: " << estudiantes[studentOption].getSurname() << endl
+                << "Documento: " << estudiantes[studentOption].getId() << endl
+                << "Asignatura: " << estudiantes[studentOption].getCourse() << endl
+                << "Nota: " << estudiantes[studentOption].getMark() << endl
                 << "Resultados: " << result << endl;
             break;
         case 4:
@@ -176,7 +196,7 @@ int main()
             cout << "Eliminar: \n";
             for (int i = 0; i < 3; i++)
             {
-                cout << i + 1 << "." << estudiantes[i].name << "\n";
+                cout << i + 1 << "." << estudiantes[i].getName() << "\n";
             }
             cin >> studentOption;
             studentOption -= 1;
