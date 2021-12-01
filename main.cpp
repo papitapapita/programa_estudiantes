@@ -57,7 +57,7 @@ int main()
         case 1:
             if (i == 3)
             {
-                cout << "Máximo de estudiantes alcanzado";
+                i = 0;
             }
             while (i < 3)
             {
