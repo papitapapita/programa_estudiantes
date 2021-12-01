@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -13,11 +14,7 @@ public:
     Students()
     {
         name = course = surname = "";
-        id = 0;
-        for (int i = 0; i < 3; i++)
-        {
-            mark[i] = 0;
-        }
+        id = mark1 = mark2 = mark3 = 0;
     }
     Students(string name, string course, string surname, float mark1, float mark2, float mark3, int id)
     {
@@ -28,22 +25,6 @@ public:
         this->mark2 = mark2;
         this->mark3 = mark3;
         this->id = id;
-    }
-
-    float Promedio()
-    {
-        promedio = (mark1 + mark2 + mark3) / 3;
-        return promedio;
-    }
-
-    string Aprobacion()
-    {
-        if (promedio >= 3 && promedio <= 5)
-            return "aprobó";
-        else if (promedio < 3 && promedio > 0)
-            return "no aprobó";
-        else
-            return "nota invalida";
     }
 
     string getName()
@@ -102,13 +83,44 @@ public:
     {
         this->id = id;
     }
+
+    void Promedio()
+    {
+        promedio = mark1 + mark2 + mark3;
+        promedio /= 3;
+    }
+
+    string Aprobacion()
+    {
+        string result;
+        if (promedio >= 3 && promedio <= 5)
+            return "aprobó";
+        else if (promedio < 3 && promedio > 0)
+            return "no aprobó";
+        else
+            return "nota invalida";
+    }
+
+    void toString()
+    {
+        string result;
+        Promedio();
+        result = Aprobacion();
+        cout
+            << "Nombre: " << name << endl
+            << "Apellido: " << surname << endl
+            << "Documento: " << id << endl
+            << "Asignatura: " << course << endl
+            << "Nota: " << fixed << setprecision(2) << promedio << endl
+            << "Resultado: " << result << endl;
+    }
 };
 
 int main()
 {
     Students estudiantes[4];
     string nName, nSurname, nCourse, result;
-    float nMark;
+    float nMark1, nMark2, nMark3;
     int option, nId;
     int out = 1;
     int i = 0;
@@ -142,9 +154,13 @@ int main()
                 cin >> nId;
                 cout << "Asignatura: ";
                 cin >> nCourse;
-                cout << "Nota: ";
-                cin >> nMark;
-                estudiantes[i] = Students(nName, nCourse, nSurname, nMark, nId);
+                cout << "Nota Primer Corte: ";
+                cin >> nMark1;
+                cout << "Nota Segundo Corte: ";
+                cin >> nMark2;
+                cout << "Nota Tercer Corte: ";
+                cin >> nMark3;
+                estudiantes[i] = Students(nName, nCourse, nSurname, nMark1, nMark2, nMark3, nId);
                 i++;
                 break;
             }
@@ -167,34 +183,51 @@ int main()
                      << "1. Nombre\n"
                      << "2. Apellido\n"
                      << "3. Asignatura\n"
-                     << "4. Nota\n"
-                     << "5. Documento\n"
-                     << "6. Menú principal\n";
+                     << "4. Nota 1\n"
+                     << "5. Nota 2\n"
+                     << "6. Nota 3\n"
+                     << "7. Documento\n"
+                     << "8. Menú principal\n";
                 cin >> modificarOption;
                 cout << "-----------\n";
                 switch (modificarOption)
                 {
                 case 1:
                     cout << "Nuevo nombre: ";
-                    cin >> estudiantes[studentOption].name;
+                    cin >> nName;
+                    estudiantes[studentOption].setName(nName);
                     break;
                 case 2:
                     cout << "Nuevo apellido: ";
-                    cin >> estudiantes[studentOption].surname;
+                    cin >> nSurname;
+                    estudiantes[studentOption].setSurname(nSurname);
                     break;
                 case 3:
                     cout << "Nueva Materia: ";
-                    cin >> estudiantes[studentOption].course;
+                    cin >> nCourse;
+                    estudiantes[studentOption].setCourse(nCourse);
                     break;
                 case 4:
                     cout << "Nueva nota: ";
-                    cin >> estudiantes[studentOption].mark;
+                    cin >> nMark1;
+                    estudiantes[studentOption].setMark1(nMark1);
                     break;
                 case 5:
-                    cout << "Nuevo documento: ";
-                    cin >> estudiantes[studentOption].id;
+                    cout << "Nueva nota: ";
+                    cin >> nMark2;
+                    estudiantes[studentOption].setMark2(nMark2);
                     break;
                 case 6:
+                    cout << "Nueva nota: ";
+                    cin >> nMark3;
+                    estudiantes[studentOption].setMark3(nMark3);
+                    break;
+                case 7:
+                    cout << "Nuevo documento: ";
+                    cin >> nId;
+                    estudiantes[studentOption].setId(nId);
+                    break;
+                case 8:
                     repeatME = 0;
                     break;
                 default:
@@ -204,22 +237,15 @@ int main()
             } while (repeatME == 1);
             break;
         case 3:
-            studentOption = 0;
             cout << "Mostrar: \n";
+            studentOption = 0;
             for (int i = 0; i < 3; i++)
             {
                 cout << i + 1 << "." << estudiantes[i].getName() << "\n";
             }
             cin >> studentOption;
             studentOption -= 1;
-            result = estudiantes[studentOption].Aprobacion();
-            cout
-                << "Nombre: " << estudiantes[studentOption].getName() << endl
-                << "Apellido: " << estudiantes[studentOption].getSurname() << endl
-                << "Documento: " << estudiantes[studentOption].getId() << endl
-                << "Asignatura: " << estudiantes[studentOption].getCourse() << endl
-                << "Nota: " << estudiantes[studentOption].getMark() << endl
-                << "Resultados: " << result << endl;
+            estudiantes[studentOption].toString();
             break;
         case 4:
             studentOption = 0;
@@ -231,7 +257,7 @@ int main()
             cin >> studentOption;
             studentOption -= 1;
             estudiantes[studentOption] = Students();
-            i--;
+            i = studentOption;
             break;
         case 5:
             out = 0;
