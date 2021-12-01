@@ -49,24 +49,19 @@ public:
     float getMark(){
         return mark;
     }
-    void setName(string name)
-    {
+    void setName(string name){
         this->name = name;
     }
-    void setCourse(string course)
-    {
+    void setCourse(string course){
         this->course = course;
     }
-    void setSurname(string surname)
-    {
+    void setSurname(string surname){
         this->surname = surname;
     }
-    void setMark(int mark)
-    {
+    void setMark(int mark){
         this->mark = mark;
     }
-    void setId(int id)
-    {
+    void setId(int id){
         this->id = id;
     }
 };
@@ -111,7 +106,7 @@ int main()
                 cin >> nCourse;
                 cout << "Nota: ";
                 cin >> nMark;
-                estudiantes[i]= Students(nName, nCourse, nSurname,nMark, nId);
+                estudiantes[i] = Students(nName, nCourse, nSurname, nMark, nId);
                 i++;
                 break;
             }
