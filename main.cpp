@@ -10,7 +10,6 @@ private:
     int id;
 
 public:
-
     Students()
     {
         name = course = surname = "";
@@ -34,22 +33,24 @@ public:
             return "nota invalida";
     }
 
-    string getName(){
+    string getName()
+    {
         return name;
     }
-    string getSurname(){
-        return Surname;
+    string getSurname()
+    {
+        return surname;
     }
-    string getCourse(){
-        return Course;
+    string getCourse()
+    {
+        return course;
     }
-    string getSurname(){
-        return Surname;
+    int getId()
+    {
+        return id;
     }
-    int getId(){
-        return  id;
-    }
-    float getMark(){
+    float getMark()
+    {
         return mark;
     }
     void setName(string name)
@@ -114,7 +115,7 @@ int main()
                 cin >> nCourse;
                 cout << "Nota: ";
                 cin >> nMark;
-                estudiantes[i]= Students(nName, nCourse, nSurname,nMark, nId);
+                estudiantes[i] = Students(nName, nCourse, nSurname, nMark, nId);
                 i++;
                 break;
             }
